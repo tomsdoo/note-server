@@ -1,0 +1,180 @@
+openapi: 3.0.0
+info:
+  title: note-server
+  description: note-server
+  version: 0.1.0
+servers:
+  - url: http://localhost:{port}
+    description: local
+    variables:
+      port:
+        default: 3000
+paths:
+  /status:
+    get:
+      summary: status
+      description: returns status
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/server_status_response'
+  /notes:
+    get:
+      summary: notes
+      description: returns notes
+      responses:
+        200:
+          description: notes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/notes_response'
+    post:
+      summary: add a note
+      description: add a note
+      requestBody:
+        description: note to add
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/note_to_add_request'
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/add_note_response'
+  /notes/{note_id}:
+    get:
+      parameters:
+        - in: path
+          name: note_id
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: note
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_note_response'
+    put:
+      parameters:
+        - in: path
+          name: note_id
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: note to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/note_to_update_request'
+      responses:
+        200:
+          description: note
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/update_note_response'
+    delete:
+      parameters:
+        - in: path
+          name: note_id
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: note
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+
+components:
+  schemas:
+    server_status_response:
+      description: status
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+      required:
+        - status
+    note_data:
+      description: note item
+      type: object
+      properties:
+        id:
+          type: string
+        subject:
+          type: string
+        body:
+          type: string
+    note:
+      type: object
+      $ref: '#/components/schemas/note_data'
+      required:
+        - id
+        - subject
+        - body
+    note_to_add:
+      type: object
+      $ref: '#/components/schemas/note_data'
+      required:
+        - body
+    note_to_update:
+      type: object
+      $ref: '#/components/schemas/note_data'
+      required:
+        - body
+    notes:
+      description: note items
+      type: array
+      items:
+        $ref: '#/components/schemas/note'
+    notes_response:
+      description: response of note items
+      type: object
+      properties:
+        notes:
+          $ref: '#/components/schemas/notes'
+    note_to_add_request:
+      type: object
+      $ref: '#/components/schemas/note_to_add'
+      required:
+        - body
+    add_note_response:
+      type: object
+      properties:
+        note:
+          $ref: '#/components/schemas/note'
+    get_note_response:
+      type: object
+      properties:
+        note:
+          $ref: '#/components/schemas/note'
+    note_to_update_request:
+      type: object
+      $ref: '#/components/schemas/note_to_update'
+      required:
+        - body
+    update_note_response:
+      type: object
+      properties:
+        note:
+          $ref: '#/components/schemas/note'
+
