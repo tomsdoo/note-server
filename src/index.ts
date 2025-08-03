@@ -10,6 +10,7 @@ import {
   put as putNote,
 } from "@/routes/notes/_noteId/";
 import { get as getStatus } from "@/routes/status/";
+import serveStatic from "koa-static-server";
 
 void (async () => {
 	const app = new Koa();
@@ -26,7 +27,7 @@ void (async () => {
     );
   });
 
-  router.get("/", getRoot);
+  router.get("/openapi", getRoot);
 	router.get("/status", getStatus);
   router.get("/notes", getNotes);
   router.post("/notes", postNotes);
@@ -36,6 +37,10 @@ void (async () => {
 
   app.use(router.routes());
   app.use(router.allowedMethods());
+  app.use(serveStatic({
+    rootDir: process.env.STATIC_ROOT ?? "public",
+    last: false,
+  }));
   const server = app.listen(port, () => {
     const url = `http://localhost:${port}`;
     console.log(`listening ${port}`);
