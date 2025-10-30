@@ -1,5 +1,5 @@
 import { Low } from "lowdb";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import type { Note } from "@/modules/notes";
 import { deleteNote, getNote, getNotes, upsertNote } from "@/modules/notes";
 
@@ -27,6 +27,10 @@ vi.mock("lowdb", async () => {
 });
 
 describe("getNotes", () => {
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
   it("calls read", async () => {
     const spyRead = vi
       .spyOn(Low.prototype, "read")
@@ -38,6 +42,10 @@ describe("getNotes", () => {
 });
 
 describe("getNote", () => {
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
   it.each([
     { description: "case note exists", id: "dummyId", expected: defaultNote },
     {
@@ -56,6 +64,10 @@ describe("getNote", () => {
 });
 
 describe("upsertNote", () => {
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
   it("case add if note not exists", async () => {
     const spyUpdate = vi.spyOn(Low.prototype, "update");
     vi.spyOn(crypto, "randomUUID").mockReturnValue("d-u-m-m-y");
@@ -95,6 +107,10 @@ describe("upsertNote", () => {
 });
 
 describe("deleteNote", () => {
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
   it("case exists", async () => {
     const spyUpdate = vi.spyOn(Low.prototype, "update");
     await upsertNote({
