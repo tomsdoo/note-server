@@ -21,7 +21,7 @@
     "@types/koa-bodyparser": "4.3.13",
     "@types/koa-router": "7.4.9",
     "@types/koa-static-server": "1.5.3",
-    "@types/node": "24.10.1",
+    "@types/node": "25.0.2",
     "tsup": "8.5.1",
     "tsx": "4.21.0",
     "typescript": "5.9.3",
