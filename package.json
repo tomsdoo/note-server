@@ -15,7 +15,7 @@
   "license": "MIT",
   "description": "a note server",
   "devDependencies": {
-    "@biomejs/biome": "2.4.7",
+    "@biomejs/biome": "2.4.9",
     "@tomsd/mongodbclient": "4.4.2",
     "@tsconfig/node24": "24.0.4",
     "@types/koa-bodyparser": "4.3.13",
@@ -25,7 +25,7 @@
     "tsup": "8.5.1",
     "tsx": "4.21.0",
     "typescript": "5.9.3",
-    "vitest": "4.1.0"
+    "vitest": "4.1.2"
   },
   "dependencies": {
     "koa": "3.1.2",
