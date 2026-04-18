@@ -19,4 +19,4 @@ RUN npm run build
 RUN rm -rf src
 
 ENTRYPOINT ["node"]
-CMD ["dist/index.js"]
+CMD ["dist/index.mjs"]
