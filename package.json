@@ -2,9 +2,9 @@
   "name": "note-server",
   "version": "0.2.2",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/index.mjs",
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "dev": "tsx src/index.ts",
     "lint": "biome check",
     "build-docker": "docker image build -t tomsd/$(npm view ./ name):$(npm view ./ version) -f Dockerfile .",
@@ -22,7 +22,7 @@
     "@types/koa-router": "7.4.9",
     "@types/koa-static-server": "1.5.3",
     "@types/node": "25.6.0",
-    "tsup": "8.5.1",
+    "tsdown": "0.21.9",
     "tsx": "4.21.0",
     "typescript": "6.0.2",
     "vitest": "4.1.4"
