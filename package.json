@@ -15,17 +15,17 @@
   "license": "MIT",
   "description": "a note server",
   "devDependencies": {
-    "@biomejs/biome": "2.4.15",
+    "@biomejs/biome": "2.4.16",
     "@tomsd/mongodbclient": "4.4.5",
     "@tsconfig/node24": "24.0.4",
     "@types/koa-bodyparser": "4.3.13",
     "@types/koa-router": "7.4.9",
     "@types/koa-static-server": "1.5.3",
     "@types/node": "25.9.1",
-    "tsdown": "0.22.0",
-    "tsx": "4.22.3",
+    "tsdown": "0.22.1",
+    "tsx": "4.22.4",
     "typescript": "6.0.3",
-    "vitest": "4.1.7"
+    "vitest": "4.1.8"
   },
   "dependencies": {
     "koa": "3.2.1",
