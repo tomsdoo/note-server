@@ -28,7 +28,7 @@
     "vitest": "5.0.5"
   },
   "dependencies": {
-    "koa": "3.2.1",
+    "koa": "3.3.0",
     "koa-bodyparser": "4.4.1",
     "koa-router": "14.0.0",
     "koa-static-server": "1.5.2",
